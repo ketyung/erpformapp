@@ -3,7 +3,7 @@ import './App.css';
 import { ItemForm  } from './Views/StoreModuleViews';
 import { Item } from './Models/StoreModule';
 
-const item : Item = { code : "", name : "", qoh : 0, price : 0 };
+const item : Item = { code : "", name : "", qoh : 0, price : 0, category : {id : 100, name : "xxx"} };
 
 
 function App() {

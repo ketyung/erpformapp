@@ -74,6 +74,7 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
 
     const codeOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
         item.code = e.currentTarget.value;
+        console.log("item.code::"+ item.code);
     };
 
     const nameOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -125,9 +126,11 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
                 <td style={{"width":"20%"}}>
                     <b>Catgeory</b>
                 </td>
-                <td style={{"width":"80%"}} colSpan={3}>
+                <td style={{"width":"30%"}}>
                     <ItemCategoryList categories={itemCats} selected={item.category}/>
-                    <span>{item.category?.name}</span>
+                </td>
+                <td style={{"width" : "50%"}} colSpan={2}>
+                {item.category?.name}
                 </td>
             </tr>
 
