@@ -72,22 +72,45 @@ interface ItemProps {
 
 export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
 
+
+    const [code , setCode] = useState(item.code);
+    const [name , setName] = useState(item.name);
+    const [qoh , setQoh] = useState(item.qoh);
+    const [price , setPrice] = useState(item.price);
+    const [category , setCategory] = useState(item.category);
+    
+
     const codeOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        item.code = e.currentTarget.value;
-        console.log("item.code::"+ item.code);
+
+        setCode(e.currentTarget.value);
+
     };
 
+
     const nameOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        item.name = e.currentTarget.value;
+        setName( e.currentTarget.value );
     };
 
 
     const priceOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        item.price = isNaN(e.currentTarget.valueAsNumber) ? Number(e.currentTarget.value) : 0; 
+
+        if (isNaN(Number(e.currentTarget.value)) ){
+
+            setPrice(0);
+        }
+        else {
+            setPrice( Number(e.currentTarget.value) ); 
+        }
     };
 
     const qohOnChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        item.qoh = isNaN(e.currentTarget.valueAsNumber) ? parseInt(e.currentTarget.value) : 0; 
+
+        if (isNaN(Number(e.currentTarget.value))) {
+            setQoh(0);
+        }
+        else {
+            setQoh( parseInt(e.currentTarget.value) ); 
+        }
     };
 
     const itemCats : Array<ItemCategory> = [
@@ -109,7 +132,7 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
                     <b>Code</b>
                 </td>
                 <td style={{"width":"80%"}} colSpan={3}>
-                    <input type="text" value={item.code} onChange={codeOnChange} />
+                    <input type="text" value={code} onChange={codeOnChange} />
                 </td>
             </tr>
 
@@ -118,7 +141,7 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
                     <b>Name</b>
                 </td>
                 <td style={{"width":"80%"}} colSpan={3}>
-                    <input type="text" style={{"width": "250px"}} value={item.name} onChange={nameOnChange} />
+                    <input type="text" style={{"width": "250px"}} value={name} onChange={nameOnChange} />
                 </td>
             </tr>
 
@@ -127,10 +150,10 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
                     <b>Catgeory</b>
                 </td>
                 <td style={{"width":"30%"}}>
-                    <ItemCategoryList categories={itemCats} selected={item.category}/>
+                    <ItemCategoryList categories={itemCats} selected={category}/>
                 </td>
                 <td style={{"width" : "50%"}} colSpan={2}>
-                {item.category?.name}
+                {category?.name}
                 </td>
             </tr>
 
@@ -139,13 +162,13 @@ export const ItemForm : React.FC <ItemProps> = ({item}: ItemProps) => {
                     <b>Price</b>
                 </td>
                 <td style={{"width":"30%"}}>
-                    <input type="text" style={{"width": "30px"}} value={item.price} onChange={priceOnChange} />
+                    <input type="text" style={{"width": "30px"}} value={price} onChange={priceOnChange} />
                 </td>
                 <td style={{"width":"20%"}}>
                     <b>QOH</b>
                 </td>
                 <td style={{"width":"30%"}}>
-                    <input type="text" style={{"width": "30px"}} value={item.qoh} onChange={qohOnChange} />
+                    <input type="text" style={{"width": "30px"}} value={qoh} onChange={qohOnChange} />
                 </td>
         
             </tr>
