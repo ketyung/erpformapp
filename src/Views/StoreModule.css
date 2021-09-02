@@ -1,0 +1,44 @@
+.itemTable {
+
+    min-width:600px;
+    border: 1px solid #ccc;
+    padding:10px;
+    margin:10px;
+    min-height:200px;
+}
+
+.itemTable tr {
+
+    text-align:left;
+}
+
+.itemCategoryTable {
+    min-width: 400px;
+    border: 1px solid #ccc;
+    padding:10px;
+    margin:8px 2px;
+}
+
+.itemCategoryTable .tableHeader {
+
+    background-color:  #dddddd;    
+    max-height:20px;
+    height:20px;
+}
+
+
+.itemCategoryTable .tableRow {
+
+    background-color:  transparent;
+}
+
+.itemCategoryTable .tableRow:hover {
+
+    background-color:  #ddeeff;
+    cursor:  pointer;
+}
+
+.itemCategoryTable .tableHeader {
+
+    max-height:  20px;
+}
